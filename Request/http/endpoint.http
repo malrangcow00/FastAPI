@@ -1,0 +1,9 @@
+GET http://127.0.0.1:8000/books-list
+
+###
+# Path Parameters
+GET http://127.0.0.1:8000/books/FastAPI
+
+###
+# Query Parameters
+GET http://127.0.0.1:8000/books?category=IT

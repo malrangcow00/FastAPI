@@ -1,0 +1,7 @@
+#Content-Type: application/json
+
+{
+  "category": "SF"
+}
+
+#< ./category.json
