@@ -6,4 +6,23 @@ GET http://127.0.0.1:8000/books/FastAPI
 
 ###
 # Query Parameters
-GET http://127.0.0.1:8000/books?category=IT
+GET http://127.0.0.1:8000/books?author=MalrangCow
+
+###
+# Both Parameters: need slash at the end of path parameter
+GET http://127.0.0.1:8000/books/MalrangCow/?category=IT
+
+###
+# not important query parameter order
+GET http://127.0.0.1:8000/books-find?category=IT&author=MalrangCow
+
+###
+# add condition to query parameter
+GET http://127.0.0.1:8000/find-book?category=IT
+###
+GET http://127.0.0.1:8000/find-book
+
+###
+# more than 2 query parameters
+GET http://127.0.0.1:8000/lookup-book?title=FastAPI&author=MalrangCow&category=IT
+

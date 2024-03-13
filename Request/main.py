@@ -13,7 +13,6 @@ Books_list = [
     {'title': 'What Should We Do', 'author': 'MalrangCow', 'category': 'Philosophy'}
 ]
 
-
 @app.get("/books-list")
 async def read_books_list():
     return Books_list
@@ -57,7 +56,8 @@ async def get_bookg_by_author_path_category_query(book_author: str, category: st
             books.append(book)
     return books
 
-@app.get("/books/find")
+# 쿼리가 없을 때 조건 X, 두가지 입력이 필수
+@app.get("/books-find")
 async def get_book_by_query(author: str = None, category: str = None):
     books = []
     for book in Books_list:
