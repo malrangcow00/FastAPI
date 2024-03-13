@@ -89,6 +89,19 @@ async def get_book_by_query(author: str = None, category: str = None):
         return {"error": "Invalid query"}
     return books
 
+@app.get("/lookup-book")
+async def get_book_by_query(author: str = None, category: str = None, title: str = None):
+    filtered_books = []
+
+    # 각 책에 대해 모든 조건을 검사
+    for book in Books_list:
+        if (author is None or book.get('author').casefold() == author.casefold()) and \
+                (category is None or book.get('category').casefold() == category.casefold()) and \
+                (title is None or book.get('title').casefold() == title.casefold()):
+            filtered_books.append(book)
+
+    return filtered_books
+
 
 @app.post("/books/create_book")
 async def create_book(new_book=Body()):
