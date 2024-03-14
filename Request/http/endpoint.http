@@ -26,3 +26,58 @@ GET http://127.0.0.1:8000/find-book
 # more than 2 query parameters
 GET http://127.0.0.1:8000/lookup-book?title=FastAPI&author=MalrangCow&category=IT
 
+###
+# POST Method
+POST http://127.0.0.1:8000/books/create_book
+Content-Type: application/json
+
+{
+  "title": "test",
+  "author": "test",
+  "category": "test"
+}
+
+###
+# Requst POST Method with .json file
+POST http://127.0.0.1:8000/books/create_book
+Content-Type: application/json
+
+< ./post.json
+
+###
+# get result
+GET http://127.0.0.1:8000/books-list
+
+###
+# PUT Method
+PUT http://127.0.0.1:8000/books/update_book
+Content-Type: application/json
+
+{
+  "title": "test",
+  "author": "None",
+  "category": "None"
+}
+
+###
+# get result
+GET http://127.0.0.1:8000/books-list
+
+###
+# Request PUT Method with .json file
+PUT http://127.0.0.1:8000/books/update_book
+Content-Type: application/json
+
+< ./put.json
+
+###
+# get result
+GET http://127.0.0.1:8000/books-list
+
+###
+# DELETE Method
+DELETE http://127.0.0.1:8000/books/delete_book/test
+
+###
+# get result
+GET http://127.0.0.1:8000/books-list

@@ -26,4 +26,5 @@ pip install "uvicorn[standard]"
 
 # INDEX
 
-- [Request](/Request/main.py)
+- [Request](/Requestment/main.py)
+- [Validation](/Validation/main.py)

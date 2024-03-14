@@ -1,0 +1,27 @@
+GET http://127.0.0.1:8000/games
+
+###
+POST http://127.0.0.1:8000/create-game
+Content-Type: application/json
+
+{
+  "id": "9",
+  "title": "Crazy Arcade",
+  "publisher": "Nexon",
+  "description": "Bubble pop!",
+  "rating": "4",
+  "published_date": "2001"
+}
+
+###
+# id is not nessacery
+POST http://127.0.0.1:8000/create-game
+Content-Type: application/json
+
+{
+  "title": "WIP",
+  "publisher": "MCGames",
+  "description": "RPG",
+  "rating": "0",
+  "published_date": "2024"
+}
