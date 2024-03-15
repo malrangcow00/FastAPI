@@ -34,7 +34,7 @@ class GameRequest(BaseModel):
     title: str = Field(min_length=3)
     publisher: str = Field(min_length=1)
     description: str = Field(min_length=1, max_length=100)
-    rating: int = Field(gt=-1, lt=6) # between 1 and 5
+    rating: int = Field(gt=-1, lt=6) # between 1 and 5 (greater than -1 and less than 6)
     published_date: int = Field(gt=1990, lt=2031)
 
     # example schema for swagger
@@ -69,6 +69,8 @@ async def read_all_games():
     return Games
 
 
+# validate the input parameter (gt=0: greater than 0)
+# add status code to the response
 @app.get("/games/{game_id}", status_code=status.HTTP_200_OK)
 async def read_game(game_id: int = Path(gt=0)):
     for game in Games:
@@ -78,7 +80,7 @@ async def read_game(game_id: int = Path(gt=0)):
 
 
 @app.get("/games/", status_code=status.HTTP_200_OK)
-async def read_game_by_rating(game_rating: int = Query(gt=0, lt=6)):
+async def read_game_by_rating(game_rating: int = Query(gt=-1, lt=6)):
     games_to_return = []
     for game in Games:
         if game.rating == game_rating:
@@ -86,9 +88,20 @@ async def read_game_by_rating(game_rating: int = Query(gt=0, lt=6)):
     return games_to_return
 
 
+# if you want to make the parameter optional
+# @app.get("/games", status_code=status.HTTP_200_OK)
+# async def read_game_by_rating(game_rating: Optional[int] = Query(default=None, gt=0, lt=6)):
+#     if game_rating is None:
+#         return Games
+#     games_to_return = []
+#     for game in Games:
+#         if game.rating == game_rating:
+#             games_to_return.append(game)
+#     return games_to_return
+
 
 @app.get("/games/publish/", status_code=status.HTTP_200_OK)
-async def read_games_by_publish_date(published_date: int = Query(gt=1999, lt=2031)):
+async def read_games_by_publish_date(published_date: int = Query(gt=1990, lt=2031)):
     games_to_return = []
     for game in Games:
         if game.published_date == published_date:
@@ -118,6 +131,7 @@ async def create_game(game_request: GameRequest):
 # to prevent duplicate id
 def find_game_id(game: Game):
     if game.id is None:
+        # start from 1 if there is no game
         game.id = 1 if len(Games) == 0 else Games[-1].id + 1
     return game
 
@@ -142,4 +156,5 @@ async def delete_game(game_id: int = Path(gt=0)):
             game_changed = True
             break
     if not game_changed:
+        # raise an HTTPException
         raise HTTPException(status_code=404, detail='Item not found')

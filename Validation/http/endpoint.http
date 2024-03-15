@@ -5,12 +5,12 @@ POST http://127.0.0.1:8000/create-game
 Content-Type: application/json
 
 {
-  "id": "9",
+  "id": 9,
   "title": "Crazy Arcade",
   "publisher": "Nexon",
   "description": "Bubble pop!",
-  "rating": "4",
-  "published_date": "2001"
+  "rating": 4,
+  "published_date": 2001
 }
 
 ###
@@ -19,9 +19,49 @@ POST http://127.0.0.1:8000/create-game
 Content-Type: application/json
 
 {
-  "title": "WIP",
+  "title": "Unknown",
   "publisher": "MCGames",
-  "description": "RPG",
-  "rating": "0",
-  "published_date": "2024"
+  "description": "Tower Defense",
+  "rating": 0,
+  "published_date": 2024
 }
+
+###
+# read game by id
+GET http://127.0.0.1:8000/games/1
+
+###
+# update game info by id
+PUT http://127.0.0.1:8000/games/update_game
+Content-Type: application/json
+
+< ./update_info.json
+
+###
+POST http://127.0.0.1:8000/create-game
+Content-Type: application/json
+
+< ./unknown_game.json
+
+###
+# delete game by id
+DELETE http://127.0.0.1:8000/games/11
+
+###
+# read games by rating
+GET http://127.0.0.1:8000/games/?game_rating=5
+
+###
+# read games by published date
+GET http://127.0.0.1:8000/games/publish/?published_date=1998
+
+###
+# read games by id (get exception error msg)
+GET http://127.0.0.1:8000/games/1000
+
+###
+# read games by invalid id (get failed error msg)
+GET http://127.0.0.1:8000/games/0
+
+###
+GET http://127.0.0.1:8000/games/?game_rating=6
