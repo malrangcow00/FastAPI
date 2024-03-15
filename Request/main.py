@@ -1,7 +1,15 @@
 from fastapi import Body, FastAPI
+from typing import Union
 
 app = FastAPI()
 
+@app.get("/videos/{video_id}")
+def read_item(video_id: int, q: Union[str, None] = None, description: Union[str, None] = None):
+    return {
+        "video_id": video_id,
+        "q": q,
+        "description": description
+    }
 
 Books_list = [
     {'title': 'FastAPI', 'author': 'MalrangCow', 'category': 'IT'},
