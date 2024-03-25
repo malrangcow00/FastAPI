@@ -24,8 +24,15 @@ pip install "uvicorn[standard]"
 
 [standard] includes additional dependencies: `websockets`, `httptools`, `unloop`
 
+to link the fastapi to the database
+
+```bash
+pip install sqlalchemy
+```
+
 # INDEX
 
 - [Request](/Request/main.py)
 - [Validation](/Validation/main.py)
   - [Http Status Codes](/Validation/Status-Codes.md)
+- [DataBase](/DataBase)

@@ -36,7 +36,7 @@
     <tr>
         <td></td>
         <td>204: No Content</td>
-        <td>The request has been successful, did not create an entity nor return anything<br>Commonly used with PUT request</td>
+        <td>The request has been successful, did not create an entity nor return anything<br>Commonly used with PUT or DELETE request</td>
     </tr>
     <tr>
         <td colspan="2">3xx</td>
