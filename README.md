@@ -21,6 +21,10 @@ install uvicorn for fastapi web server
 ```bash
 pip install "uvicorn[standard]"
 ```
+migration tool
+```bash
+pip install alembic
+```
 
 [standard] includes additional dependencies: `websockets`, `httptools`, `unloop`
 
@@ -28,6 +32,11 @@ to link the fastapi to the database
 
 ```bash
 pip install sqlalchemy
+pip install pymysql
+```
+pymysql password encoding
+```bash
+pip install cryptography
 ```
 
 # INDEX

@@ -2,9 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-DATABASE_URL = 'jdbc:mysql://localhost:3306/fastapi'
+DATABASE_URL = ('mysql+pymysql://malrangcow:choonsik@localhost:3306/fastapi')
 
-engine = create_engine(DATABASE_URL, connect_args={'check_same_thread': False})
+engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
